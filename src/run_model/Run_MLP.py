@@ -11,17 +11,18 @@ train_data = MyDataset(file_path)
 
 # 设置超参数
 input_size = 107  # 输入特征的维度
-hidden_size = 64  # 隐藏层大小
+hidden_size1 = 64  # 隐藏层大小
+hidden_size2 = 32
 output_size = 6  # 输出类别的数量
 learning_rate = 0.0005
-num_epochs = 70
+num_epochs = 100
 batch_size = 32
 
 # 初始化数据加载器
 train_loader = DataLoader(train_data, shuffle=True, batch_size=batch_size)
 
 # 初始化模型、损失函数
-model = MLP(input_size, hidden_size, output_size)
+model = MLP(input_size, hidden_size1, hidden_size2, output_size)
 criterion = nn.CrossEntropyLoss()  # 交叉损失函数
 optimizer = optim.Adam(model.parameters(), lr=learning_rate)  # Adam优化器
 
@@ -35,7 +36,7 @@ for epoch in range(num_epochs):
         loss.backward()  # 反向传播
         optimizer.step()  # 更新参数
         total_loss += loss.item()
-    print('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, total_loss))
+    print('Epoch [{}/{}], Loss: {:.4f}'.format(epoch + 1, num_epochs, total_loss))
 
 # 测试集数据
 file_path = '../../Data/validate_1000.csv'
@@ -57,4 +58,3 @@ with torch.no_grad():
 
     accuracy = correct / total
     print('Test Accuracy: {:.2f}%'.format(accuracy * 100))
-

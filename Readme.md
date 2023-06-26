@@ -1,6 +1,11 @@
 # 软件杯代码
 ```angular2html
 python == 3.7
+torch == 1.13.1
+scikit-learn == 1.0.2
+numpy == 1.21.5
+pandas == 1.3.5
+seaborn == 0.12.2
 ```
 
 # 文档分类

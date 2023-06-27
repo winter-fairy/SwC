@@ -15,6 +15,9 @@ raw 未处理过的数据
     ·validate_1000.csv 1000条数据，验证集数据，当测试集用
 processed 处理过的数据
     ·train_10000_mean.csv 标准化后，用均值填充了NA值后的训练数据
+    ·train_10000_KNN.csv 标准化后，用KK填充了NA值后的训练数据
+    ·validate_1000.mean.csv 标准化后，用均值填充了NA值后的测试数据
+    ·validate_1000.KNN.csv 标准化后，用KK填充了NA值后的测试数据
 ```
 
 # 文档分类

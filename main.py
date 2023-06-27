@@ -11,15 +11,15 @@ from src.utils.data_util import MyDataset
 
 
 def process_data1():
-    data_path = 'Data/raw/train_10000.csv'
+    data_path = 'Data/raw/validate_1000.csv'
     processed_data = MyDataset.process_data(data_path)
-    save_path = 'Data/processed/train_10000_mean.csv'
+    save_path = 'Data/processed/validate_1000_mean.csv'
     processed_data.to_csv(save_path, index=False)
 
 
 def process_data2():
-    data_path = 'Data/raw/train_10000.csv'
-    save_path = 'Data/processed/train_10000_KNN.csv'
+    data_path = 'Data/raw/validate_1000.csv'
+    save_path = 'Data/processed/validate_1000_KNN.csv'
     df = pd.read_csv(data_path)  # 读取数据集
     feature_columns = df.columns[1:-1]  # 选择需要标准化的特征列
     scaler = StandardScaler()  # 创建标准化对象
@@ -31,6 +31,7 @@ def process_data2():
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    process_data1()
     process_data2()
 
 

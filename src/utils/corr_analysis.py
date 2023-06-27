@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 # 读取CSV文件
-data = pd.read_csv('../../Data/train_10000.csv')
+data = pd.read_csv('../../Data/raw/train_10000.csv')
 
 feature_columns = data.columns[1:-1]  # 选择需要标准化的特征列
 scaler = StandardScaler()  # 创建标准化对象

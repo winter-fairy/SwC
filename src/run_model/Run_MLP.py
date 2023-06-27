@@ -6,7 +6,7 @@ from src.utils.data_util import MyDataset
 from src.models.MLP import MLP
 
 # 读取数据，创建数据集类
-file_path = '../../Data/train_10000.csv'
+file_path = '../../Data/raw/train_10000.csv'
 train_data = MyDataset(file_path)
 
 # 设置超参数
@@ -38,7 +38,7 @@ for epoch in range(num_epochs):
     print('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, total_loss))
 
 # 测试集数据
-file_path = '../../Data/validate_1000.csv'
+file_path = '../../Data/raw/validate_1000.csv'
 test_data = MyDataset(file_path)
 
 # 测试集上评估

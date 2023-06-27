@@ -28,7 +28,7 @@ class MyDataset(Dataset):
     @staticmethod
     def process_data(data_path):
         """
-        读取对应文件的数据，并进行标准化，填充NA值
+        读取对应文件的数据，并进行标准化，使用均值填充
         :param data_path: 数据路径
         :return: 处理过后的数据
         """

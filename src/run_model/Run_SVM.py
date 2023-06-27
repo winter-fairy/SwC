@@ -6,14 +6,14 @@ from sklearn.metrics import classification_report
 from src.utils.data_util import MyDataset
 
 # 读取训练数据
-train_data_path = '../../Data/train_10000.csv'
+train_data_path = '../../Data/raw/train_10000.csv'
 train_data = MyDataset.process_data(train_data_path)
 # 分割特征和标签
 train_features = train_data.iloc[:, 1:-1]  # 选择feature0到feature106列作为特征
 train_labels = train_data['label']
 
 # 读取测试集数据
-test_data_path = '../../Data/validate_1000.csv'
+test_data_path = '../../Data/raw/validate_1000.csv'
 test_data = MyDataset.process_data(test_data_path)
 # 分割特征和标签
 test_features = test_data.iloc[:, 1:-1]  # 选择feature0到feature106列作为特征

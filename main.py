@@ -6,32 +6,34 @@ from sklearn.preprocessing import StandardScaler
 from src.utils.data_util import MyDataset
 
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def process_data():
+    data_path = 'Data/raw/train_10000.csv'
+    save_path = 'Data/processed/train_10000_mean.csv'
+    # 读取CSV数据集
+    data = pd.read_csv(data_path)
 
+    # 分离特征和标签
+    features = data.drop(['sample_id', 'label'], axis=1)
+    labels = data['label']
 
-def process_data1():
-    data_path = 'Data/raw/validate_1000.csv'
-    processed_data = MyDataset.process_data(data_path)
-    save_path = 'Data/processed/validate_1000_mean.csv'
-    processed_data.to_csv(save_path, index=False)
+    # 标准化特征数据
+    scaler = StandardScaler()
+    scaled_features = scaler.fit_transform(features)
 
+    # 填充缺失值
+    filled_features = pd.DataFrame(scaled_features, columns=features.columns)
+    filled_features.fillna(filled_features.mean(), inplace=True)
 
-def process_data2():
-    data_path = 'Data/raw/validate_1000.csv'
-    save_path = 'Data/processed/validate_1000_KNN.csv'
-    df = pd.read_csv(data_path)  # 读取数据集
-    feature_columns = df.columns[1:-1]  # 选择需要标准化的特征列
-    scaler = StandardScaler()  # 创建标准化对象
-    df[feature_columns] = scaler.fit_transform(df[feature_columns])  # 拟合数据，即标准化数据
-    imputer = KNNImputer(n_neighbors=3)  # 创建KNN填充器对象
-    processed_data = pd.DataFrame(imputer.fit_transform(df), columns=df.columns)  # 使用KNN填充器填充DataFrame中的空值
-    processed_data.to_csv(save_path, index=False)
+    # 合并特征和标签
+    processed_data = pd.concat([filled_features, labels], axis=1)
+
+    # 打印处理后的数据
+    print(len(processed_data))
+    processed_data.to_csv(save_path)
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    process_data1()
-    process_data2()
+    process_data()
 
 
